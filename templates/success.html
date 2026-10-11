@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Registration successful. You're all set for the event.">
+    <title>Registration Successful — TechVista 2026</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Animated background orbs -->
+    <div class="bg-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <div class="page-wrapper">
+
+        <div class="card">
+            <div class="success-container">
+                <div class="success-icon">✓</div>
+                <h2>You're All Set!</h2>
+                <p>Your registration has been confirmed. We'll send event details to your email soon.</p>
+                <a href="{{ url_for('index') }}" class="btn-back">
+                    ← Back to Registration
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

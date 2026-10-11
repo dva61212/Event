@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Register for our upcoming event. Fill in your details to secure your spot.">
+    <title>Event Registration — Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Animated background orbs -->
+    <div class="bg-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <div class="page-wrapper">
+
+        <!-- Hero header -->
+        <header class="hero">
+            <div class="badge">
+                <span class="dot"></span>
+                Registration Open
+            </div>
+            <h1>Register for <span class="gradient-text">TechVista 2026</span></h1>
+            <p>Join industry leaders and innovators. Fill in your details below to reserve your seat.</p>
+        </header>
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">
+                            <span class="flash-icon">
+                                {% if category == 'error' %}⚠{% else %}✓{% endif %}
+                            </span>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Registration form card -->
+        <div class="card">
+            <form action="{{ url_for('register') }}" method="POST" id="registration-form">
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="full_name">Full Name <span class="required">*</span></label>
+                        <input type="text" id="full_name" name="full_name" placeholder="Jane Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="organization">Organization</label>
+                        <input type="text" id="organization" name="organization" placeholder="Your company or school">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="event_type">Event Track <span class="required">*</span></label>
+                        <select id="event_type" name="event_type" required>
+                            <option value="" disabled selected>Select a track</option>
+                            <option value="workshop">Workshop — Hands-on Labs</option>
+                            <option value="conference">Conference — Keynotes & Panels</option>
+                            <option value="hackathon">Hackathon — Build & Compete</option>
+                            <option value="networking">Networking — Meet & Mingle</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dietary_preference">Dietary Preference</label>
+                        <select id="dietary_preference" name="dietary_preference">
+                            <option value="" disabled selected>Select preference</option>
+                            <option value="none">No Preference</option>
+                            <option value="vegetarian">Vegetarian</option>
+                            <option value="vegan">Vegan</option>
+                            <option value="gluten_free">Gluten-Free</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="comments">Additional Comments</label>
+                        <textarea id="comments" name="comments" placeholder="Anything you'd like us to know..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submit-btn">
+                    Register Now →
+                </button>
+            </form>
+
+            <p class="footer-note">
+                Already registered? <a href="{{ url_for('registrations') }}">View all registrations</a>
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>
